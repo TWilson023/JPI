@@ -65,11 +65,13 @@ class JPI {
     }
 
     public function __construct($host, $user, $password, $db) {
-        $mysqli = new mysqli($host, $user, $password, $db);
-        if ($mysqli->connect_errno)
-            echo ("Failed to connect to MySQL server (" . $mysqli->connect_errno . ") - " . $mysqli->connect_error);
+        if ($host !== null) {
+            $mysqli = new mysqli($host, $user, $password, $db);
+            if ($mysqli->connect_errno)
+                echo ("Failed to connect to MySQL server (" . $mysqli->connect_errno . ") - " . $mysqli->connect_error);
 
-        $this->dbi = new DBInterface($mysqli);
+            $this->dbi = new DBInterface($mysqli);
+        }
         $this->actions = array();
     }
 
