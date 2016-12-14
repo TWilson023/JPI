@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JPI Testing</title>
+        <script src="../js/jpi.js"></script>
+        <script>
+            JPI.init("../php/action.php");
+            JPI.debug = true;
+            JPI.performAction('TestAction', {
+                repeat: "Hello, it's nice to meet you!"
+            }, function(result) {
+                var element =  document.createElement("h1")
+                element.id = "Result";
+                element.innerHTML = JSON.stringify(result.data);
+                document.body.appendChild(element);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>JPI Testing</h1>
+    </body>
+</html>
